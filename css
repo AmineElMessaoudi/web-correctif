@@ -1,0 +1,85 @@
+/* Feuille de style - corrigé de l'examen */
+/* TODO */
+
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+
+/* Fil d'Ariane */
+#breadcrumb li {
+	display:inline-block;
+}
+
+#breadcrumb li::after {
+	content:' \002b17 ';
+}
+
+#breadcrumb li:last-child::after {
+	content:'';
+}
+
+/* Formulaire - Questionnaire de satisfaction */
+form#frmSurvey fieldset {
+	background-image: url(../images/survey.webp);
+	background-repeat: no-repeat;
+	background-size: 100px;
+	/* background-position: right bottom; */	/* collé aux bordures du fieldset */
+	background-position: 95% 90%;				/* pour avoir un peu de marge */
+	
+}
+
+form#frmSurvey label {
+	font-weight: bold;
+	font-variant: small-caps;
+	color: #01d758;
+}
+
+/* Annulation de la mise en forme des label pour les groupements radio et checkbox */
+form#frmSurvey input[type=radio]+label, form#frmSurvey input[type=checkbox]+label {
+	font-weight: normal;
+	font-variant: initial;
+	color: black;
+}
+
+form#frmSurvey input[type=text], form#frmSurvey textarea { background-color: transparent; }
+form#frmSurvey input[type=text]:focus, form#frmSurvey textarea:focus { background-color: lightblue; }
+
+/* Tableau - Palmarès */
+table {
+	/* Centrage */
+	width: 80%;
+	margin:auto;
+	
+	border:3px double black;
+	border-bottom-left-radius: 15px;
+	border-top-right-radius: 15px;
+    box-shadow: 5px 5px 5px gold;
+    
+}
+
+caption {
+	font-family: 'Lobster', cursive;
+/*    border-bottom: 3px double black;	*/	/* Supprimé lors de la correction car pas joli :) */
+}
+
+tbody tr:hover { background-color: gold; }
+
+tfoot { text-align: center; }
+
+@media screen and (max-width: 640px) {
+	table {	display: block; }
+	
+	caption { display: block; border-bottom: 3px double black; }
+	
+	thead tr { display: inline-block; }
+
+	tbody tr { display: list-item; list-style-type: numeric; margin-left: 20px; }
+	
+	/* Suppression de la cellule comportant le numéro */
+	tbody tr td:first-child { display: none; }
+	
+	tbody td, thead td { display: inline-block; width: 100px; }
+	
+	th:nth-child(2) { width: 100px; }
+	
+	/* Affichage de la cellule supprimée en cas de fusion */
+	tbody td:nth-last-child(2) { display: inline-block !important; font-style: italic; }
+}
